@@ -192,11 +192,11 @@ sdks/python-client/dify_client.egg-info
 
 .vscode/*
 !.vscode/launch.json
+!.vscode/settings.json
 pyrightconfig.json
 api/.vscode
 
 .idea/
-.vscode
 
 # pnpm
 /.pnpm-store
