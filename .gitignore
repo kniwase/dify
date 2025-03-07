@@ -179,6 +179,7 @@ docker/volumes/oceanbase/*
 docker/volumes/plugin_daemon/*
 !docker/volumes/oceanbase/init.d
 !docker/.env
+docker/docker-compose.yaml
 
 docker/nginx/conf.d/default.conf
 docker/nginx/ssl/*
