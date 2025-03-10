@@ -26,6 +26,10 @@ RUN pnpm install --frozen-lockfile
 
 # build resources
 FROM base AS builder
+
+ARG BASE_PATH
+ENV NEXT_PUBLIC_BASE_PATH=${BASE_PATH}
+
 WORKDIR /app/web
 COPY --from=packages /app/web/ .
 COPY . .
@@ -36,6 +40,9 @@ RUN pnpm build
 
 # production stage
 FROM base AS production
+
+ARG BASE_PATH
+ENV NEXT_PUBLIC_BASE_PATH=${BASE_PATH}
 
 ENV NODE_ENV=production
 ENV EDITION=SELF_HOSTED

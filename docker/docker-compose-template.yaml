@@ -54,6 +54,8 @@ services:
     build:
       context: ../web
       dockerfile: Dockerfile
+      args:
+        BASE_PATH: ${BASE_PATH:-}
     restart: always
     environment:
       CONSOLE_API_URL: ${CONSOLE_API_URL:-}

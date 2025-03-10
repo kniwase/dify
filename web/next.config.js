@@ -1,14 +1,13 @@
 const nextConfigOriginal = require('./next.config-original')
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   ...nextConfigOriginal,
   redirects: undefined,
-  basePath: '/self-hosted-dify',
-  assetPrefix: '/self-hosted-dify',
-  publicRuntimeConfig: {
-    basePath: '/self-hosted-dify',
-  }
-};
+  basePath,
+  assetPrefix: basePath,
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
