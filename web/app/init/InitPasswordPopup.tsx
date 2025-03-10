@@ -41,7 +41,7 @@ const InitPasswordPopup = () => {
   useEffect(() => {
     fetchInitValidateStatus().then((res: InitValidateStatusResponse) => {
       if (res.status === 'finished')
-        window.location.href = '/self-hosted-dify/install'
+        window.location.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/install`
       else
         setLoading(false)
     })

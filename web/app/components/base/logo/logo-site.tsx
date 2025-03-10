@@ -11,7 +11,7 @@ const LogoSite: FC<LogoSiteProps> = ({
 }) => {
   return (
     <img
-      src={'/self-hosted-dify/logo/logo.png'}
+      src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/logo/logo.png`}
       className={classNames('block w-[22.651px] h-[24.5px]', className)}
       alt='logo'
     />

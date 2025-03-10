@@ -42,7 +42,7 @@ const afterResponseErrorCode = (otherOptions: IOtherOptions): AfterResponseHook 
             if (!otherOptions.silent)
               Toast.notify({ type: 'error', message: data.message })
             if (data.code === 'already_setup')
-              globalThis.location.href = `${globalThis.location.origin}/self-hosted-dify/signin`
+              globalThis.location.href = `${globalThis.location.origin}${process.env.NEXT_PUBLIC_BASE_PATH || ''}/signin`
           })
           break
         case 401:

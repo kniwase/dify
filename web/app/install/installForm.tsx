@@ -66,12 +66,12 @@ const InstallForm = () => {
     fetchSetupStatus().then((res: SetupStatusResponse) => {
       if (res.step === 'finished') {
         localStorage.setItem('setup_status', 'finished')
-        window.location.href = '/self-hosted-dify/signin'
+        window.location.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/signin`
       }
       else {
         fetchInitValidateStatus().then((res: InitValidateStatusResponse) => {
           if (res.status === 'not_started')
-            window.location.href = '/self-hosted-dify/init'
+            window.location.href = `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/init`
         })
       }
       setLoading(false)
