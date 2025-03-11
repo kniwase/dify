@@ -41,4 +41,6 @@ services:
 
 volumes:
   db_data:
+    name: dify-db-data
   minio_data:
+    name: dify-minio-data
