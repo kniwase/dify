@@ -105,6 +105,11 @@ services:
     environment:
       # Use the shared environment variables.
       <<: *shared-api-worker-env
+      PLUGIN_STORAGE_TYPE: aws_s3
+      PLUGIN_STORAGE_OSS_BUCKET: ${S3_BUCKET_NAME:-}
+      AWS_REGION: ${S3_REGION:-}
+      AWS_ACCESS_KEY: ${S3_ACCESS_KEY:-}
+      AWS_SECRET_KEY: ${S3_SECRET_KEY:-}
       DB_DATABASE: ${DB_PLUGIN_DATABASE:-dify_plugin}
       SERVER_PORT: ${PLUGIN_DAEMON_PORT:-5002}
       SERVER_KEY: ${PLUGIN_DAEMON_KEY:-lYkiYYT6owG+71oLerGzA7GXCgOT++6ovaezWAjpCjf+Sjc3ZtU+qUEi}

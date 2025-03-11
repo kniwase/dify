@@ -38,9 +38,19 @@ services:
       interval: 30s
       timeout: 20s
       retries: 3
+    ports:
+      - 9001:9001
+
+  plugin_daemon:
+    environment:
+      PLUGIN_STORAGE_TYPE: local
+    volumes:
+      - plugin_daemon_storage:/app/storage
 
 volumes:
   db_data:
     name: dify-db-data
   minio_data:
     name: dify-minio-data
+  plugin_daemon_storage:
+    name: plugin-daemon-storage
