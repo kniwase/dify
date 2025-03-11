@@ -72,7 +72,7 @@ services:
 
   # The postgres database.
   db:
-    image: postgres:15-alpine
+    image: postgres:15.10
     restart: always
     environment:
       PGUSER: ${PGUSER:-postgres}
