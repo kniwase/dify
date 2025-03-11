@@ -4,39 +4,39 @@ server {
     listen ${NGINX_PORT};
     server_name ${NGINX_SERVER_NAME};
 
-    location /self-hosted-dify/console/api {
+    location ${NGINX_BASE_PATH}/console/api {
       proxy_pass http://api:5001/console/api;
       include proxy.conf;
     }
 
-    location /self-hosted-dify/api {
+    location ${NGINX_BASE_PATH}/api {
       proxy_pass http://api:5001/api;
       include proxy.conf;
     }
 
-    location /self-hosted-dify/v1 {
+    location ${NGINX_BASE_PATH}/v1 {
       proxy_pass http://api:5001/v1;
       include proxy.conf;
     }
 
-    location /self-hosted-dify/files {
+    location ${NGINX_BASE_PATH}/files {
       proxy_pass http://api:5001/files;
       include proxy.conf;
     }
 
-    location /self-hosted-dify/explore {
-      proxy_pass http://web:3000/self-hosted-dify/explore;
+    location ${NGINX_BASE_PATH}/explore {
+      proxy_pass http://web:3000${NGINX_BASE_PATH}/explore;
       include proxy.conf;
     }
 
-    location /self-hosted-dify/e/ {
+    location ${NGINX_BASE_PATH}/e/ {
       proxy_pass http://plugin_daemon:5002;
       proxy_set_header Dify-Hook-Url $scheme://$host$request_uri;
       include proxy.conf;
     }
 
-    location /self-hosted-dify/ {
-      proxy_pass http://web:3000/self-hosted-dify/;
+    location ${NGINX_BASE_PATH}/ {
+      proxy_pass http://web:3000${NGINX_BASE_PATH}/;
       include proxy.conf;
     }
 
