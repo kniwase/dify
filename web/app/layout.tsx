@@ -26,7 +26,6 @@ const LocaleLayout = ({
   children: React.ReactNode
 }) => {
   const locale = getLocaleOnServer()
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || undefined
 
   return (
     <html lang={locale ?? 'en'} className="h-full" suppressHydrationWarning>
@@ -35,7 +34,7 @@ const LocaleLayout = ({
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        {basePath ? <base href={basePath} /> : null}
+        {process.env.NEXT_PUBLIC_BASE_PATH ? <base href={process.env.NEXT_PUBLIC_BASE_PATH} /> : null}
       </head>
       <body
         className="h-full select-auto color-scheme"
