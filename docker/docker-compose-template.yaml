@@ -214,28 +214,21 @@ services:
       - '${EXPOSE_NGINX_SSL_PORT:-443}:${NGINX_SSL_PORT:-443}'
 
   minio:
-    container_name: milvus-minio
     image: minio/minio:RELEASE.2023-03-20T20-16-18Z
-    profiles:
-      - milvus
     environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minioadmin}
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minioadmin}
     volumes:
-      - ./volumes/milvus/minio:/minio_data
+      - ./volumes/minio:/minio_data
     command: minio server /minio_data --console-address ":9001"
     healthcheck:
       test: [ 'CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live' ]
       interval: 30s
       timeout: 20s
       retries: 3
-    networks:
-      - milvus
 
 networks:
   # create a network between sandbox, api and ssrf_proxy, and can not access outside.
   ssrf_proxy_network:
     driver: bridge
     internal: true
-  milvus:
-    driver: bridge
